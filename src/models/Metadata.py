@@ -1,3 +1,5 @@
+from json import JSONEncoder
+
 class Metadata:
     def __init__(self, url, headline, standfirst, date_published, author, category):
         self.url = url
@@ -25,3 +27,6 @@ class Metadata:
     def get_category(self):
         return self.category
 
+class MetadataEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
