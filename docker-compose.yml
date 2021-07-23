@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  windscreen:
+    image: "windscreen:latest"
+    depends_on: 
+      - "redis"
+  redis:
+    ports:
+      -  "6379:6379"
+    image: "redis:6.2.5"
+  redis-commander:
+      hostname: redis-commander
+      image: rediscommander/redis-commander:latest
+      restart: always
+      environment:
+        - REDIS_HOSTS=local:redis:6379
+      ports:
+        - "8081:8081"
