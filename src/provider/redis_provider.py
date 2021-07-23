@@ -5,5 +5,5 @@ class RedisProvider:
         pass
 
     def get(self):
-        return redis.StrictRedis()
+        return redis.StrictRedis(host='redis')
 
