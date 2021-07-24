@@ -23,14 +23,12 @@ class Parser:
 
     def find_metadata(self, html):
         soup = bs(html, 'html.parser')
-        try: 
-            return MetadataBuilder(True).with_url(self._find_url(soup)) .with_headline(self._find_headline(soup)) .with_standfirst(self._find_standfirst(soup)) .with_date_published(self._find_date_published(soup)) .with_author(self._find_author(soup)) .with_category(self._find_category(soup)) .build()
-        except Exception as e:
-            print('Exception occured building metadata: ', e)
+        return MetadataBuilder(True).with_url(self._find_url(soup)) .with_headline(self._find_headline(soup)) .with_standfirst(self._find_standfirst(soup)) .with_date_published(self._find_date_published(soup)) .with_author(self._find_author(soup)) .with_category(self._find_category(soup)) .build()
+
 
     def _find_url(self, soup):
         return soup.find('link', {'rel': 'canonical'})['href']
-        
+    
     def _find_headline(self, soup):
         return soup.find('h1', {'class': 'headline'}).text.strip()
 

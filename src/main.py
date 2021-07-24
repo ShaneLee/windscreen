@@ -38,7 +38,10 @@ def main():
         LINK_SERVICE
     )
     while (True):
-        processor.process().__next__()
+        try: 
+            processor.process().__next__()
+        except:
+            processor.process().__next__()
 
 if __name__ == '__main__':
     main()

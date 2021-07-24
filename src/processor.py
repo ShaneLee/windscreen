@@ -44,7 +44,7 @@ class Processor:
             print('Exception occured processing link: ', e)
         except: 
             print('Unexpected error occured')
-    
+
     def _find_link(self):
         try:
             return self.link_generator.next()
