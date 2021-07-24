@@ -34,12 +34,16 @@ class Processor:
             return self.content_service.process(content)
         except Exception as e:
             print('Exception occured processing content: ', e)
+        except: 
+            print('Unexpected error occured')
 
     def _process_link(self, content):
         try: 
             self.link_service.process(content)
         except Exception as e:
             print('Exception occured processing link: ', e)
+        except: 
+            print('Unexpected error occured')
     
     def _find_link(self):
         try:
