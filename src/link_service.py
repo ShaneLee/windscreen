@@ -8,7 +8,9 @@ class LinkService:
             filter(self._remove_unwanted,
             map(self._translate, self.parser.find_unique_article_links(html))))
         print('retrieved ', len(links), ' links')
-        return self.repository.put_all(links)
+        if links:
+            return self.repository.put_all(links)
+        return 0
 
     def _remove_unwanted(self, link):
         return 'ft.com/content/' in link
