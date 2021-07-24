@@ -16,7 +16,7 @@ class LocalLinkRepository:
     def get_batch(self):
         batch = []
         print('getting batch')
-        for i in range(1, 10):
+        for i in range(1, self.batch_size):
             try: 
                 batch.append(self.links.pop())
             except KeyError:
