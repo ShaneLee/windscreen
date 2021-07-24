@@ -26,8 +26,20 @@ class Processor:
            self.process()
         print('processing link ', link)
         content = self.scraper.scrape(link)
-        self.link_service.process(content)
-        return self.content_service.process(content)
+        self._process_link(content)
+        return self._process_content(content)
+
+    def _process_content(self, content):
+        try: 
+            return self.content_service.process(content)
+        except Exception as e:
+            print('Exception occured processing content: ', e)
+
+    def _process_link(self, content):
+        try: 
+            self.link_service.process(content)
+        except Exception as e:
+            print('Exception occured processing link: ', e)
     
     def _find_link(self):
         try:
