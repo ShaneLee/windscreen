@@ -5,5 +5,6 @@ class ContentService:
 
     def process(self, html):
         article = self.article_factory.create(html)
+        if not article:
+            return 
         yield self.repository.put(article)
-
